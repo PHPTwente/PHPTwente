@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title>PHP Twente!</title>
+
+    <link href="jquery.tweet.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #5a68a5;
+            color: #FFF;
+        }
+        .container {
+            background: #FFF;
+            color: #333;
+            width: 448px;
+            padding: 50px;
+            margin: 1em auto;
+
+            -webkit-border-radius: 1em;
+            -moz-border-radius: 1em;
+            border-radius: 1em;
+
+            -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        }
+		#social-media-buttons
+		{
+			position: fixed;
+			top: 1em;
+			left: 50%;
+			margin-left: 290px;
+		}
+
+        .logo {
+            margin-bottom: 2em;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+		<div id="weather"></div>
+        <img class="logo" src="Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo">
+        <div class="tweet"></div>
+    </div>
+	<div id="social-media-buttons">
+        <a href="http://www.linkedin.com/groups/PHP-Twente-4264481" >
+            <img src="linkedin-group-button.png" alt="View the PHP Twente Group on LinkedIn">
+        </a>
+
+        <a href="https://twitter.com/PHPTwente" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @PHPTwente</a>
+    </div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/seaofclouds/tweet/master/tweet/jquery.tweet.js"></script>
+    <script type="text/javascript" src="//platform.twitter.com/widgets.js" id="twitter-wjs"></script>
+
+    <script type="text/javascript">
+        jQuery(function($){
+            $(".tweet").tweet({
+                query: '@PHPTWENTE OR to:PHPTWENTE OR from:PHPTWENTE OR #PHPTWENTE',
+                avatar_size: 48,
+                count: 10,
+                loading_text: "Loading tweets..."
+            });
+        });
+    </script>
+	<script type="text/javascript">
+		(function($) {
+			$.YQL = function(query, format){
+				var defaults = {'format': 'json'};
+				var options = $.extend({}, defaults, {'format': format})
+				var encodedQuery = encodeURIComponent(query.toLowerCase()),
+					url = 'http://query.yahooapis.com/v1/public/yql?q='
+						+ encodedQuery + '&format=' + options.format + '&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';// + '&callback=?';
+				options = $.extend(options, {'url': url});
+				
+				if(options.format == 'json') {
+					return $.getJSON(options.url);
+				} else {
+					return $.ajax(options);
+				}
+			};
+		})(jQuery);
+		
+		(function($){
+//			$.YQL('show tables', 'json').success(function(data){console.log(data)});
+			
+			$.YQL('select * from weather.bylocation where location="enschede" and unit="c"', 'json').success(
+				function(data){
+					
+					var $weather = $('#weather');
+					var html = '';
+					
+					/*
+					 * Trying to keep the code below more readable
+					 */
+					var units = data.query.results.weather.rss.channel.units;
+					var item = data.query.results.weather.rss.channel.item;
+					var location = data.query.results.weather.rss.channel.location;
+					
+					html += '<h2>Yahoo weather forecast for ' + location.city + '</h2>';
+					html += '<h3>Most recent information (' + item.condition.date + ')</h3>';
+					html += '<p>Conditions: ' + item.condition.text + '<br>Temperature: ' + item.condition.temp + units.temperature + '</p>';
+					
+					for(i = 0; i < item.forecast.length; i++)
+					{
+						var forecast = item.forecast[i];
+						html += '<h3>Forecast for ' + forecast.day + ', ' + forecast.date + '</h3>';
+						html += '<p>Conditions: ' + forecast.text;
+						html += '<br>Minimum temperature: ' + forecast.low + units.temperature;
+						html += '<br>Maximum temperature: ' + forecast.high + units.temperature;
+						html += '</p>';
+					}
+					
+					$weather.html(html);
+//					console.log(data)
+				}
+			);
+		})(jQuery);
+	</script>
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29060286-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+</body>
+</html>
