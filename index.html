@@ -127,12 +127,19 @@
 
     <script type="text/javascript">
         jQuery(function($){
-            $(".tweet").tweet({
-                query: '@PHPTWENTE OR to:PHPTWENTE OR from:PHPTWENTE OR #PHPTWENTE',
-                avatar_size: 48,
-                count: 10,
-                loading_text: "Loading tweets..."
-            });
+            dateNow = new Date();
+            dateFuture = new Date(2012,09,06,23,59,59,00);
+            
+            if ( dateNow < dateFuture ) {
+                $('body').addClass('meetup-2012-09');
+            } else {        
+                $(".tweet").tweet({
+                    query: '@PHPTWENTE OR to:PHPTWENTE OR from:PHPTWENTE OR #PHPTWENTE',
+                    avatar_size: 48,
+                    count: 10,
+                    loading_text: "Loading tweets..."
+                });
+            }
         });
     </script>
     <script type="text/javascript">
