@@ -33,7 +33,7 @@ body {
     .container {
         background: #FFF;
         color: #333;
-        width: 35em;
+        width: 36em; /* Dividable by the amount of menu items */
         padding: 0;
         position: relative;
         margin: 1em auto;
@@ -48,7 +48,7 @@ body {
         /* Main Menu
          -------------------------------------------------------------------- */
         .container nav {
-            width: 36em; /* 1em more than the container to allow for rounding */
+            width: 37em; /* 1em more than the container to allow for rounding */
             padding: 0;
             margin: 0;
             top: 0;
@@ -56,10 +56,13 @@ body {
             left: 0;
             height: 1.5em;
             line-height: 1.5em;
-            background: #5a68a5;
+            /*background: #5a68a5;*/
+            background: none;
+            z-index: 1;
         }
 
         .container nav :first-child {
+            border-left: none;
             -webkit-border-top-left-radius: 1em;
             -moz-border-radius-topleft: 1em;
             border-top-left-radius: 1em;
@@ -78,15 +81,14 @@ body {
         .container nav a {
             background-color: #b0baeb;
             border-bottom: 0.1em solid #26388B;
-            /*border-left: 0.1em solid #FFF;*/
-            border-right: 0.1em solid #26388B;
+            border-left: 0.1em solid #26388B;
 
             color: #FFF;
 
             margin: 0;
             padding: 0;
 
-            width: 6.925em;
+            width: 5.95em; /* 36/6 -0.075*/
 
             overflow: hidden;
             display: block;
