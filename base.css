@@ -88,7 +88,9 @@ body {
             margin: 0;
             padding: 0;
 
-            width: 5.95em; /* 36/6 -0.075*/
+            /*width: 5.95em; *//* 36/6 -0.075*/
+            /*width: 6.95em; *//* 35/5 -0.075*/
+            width: 8.95em; /* 36/4 -0.075*/
 
             overflow: hidden;
             display: block;
