@@ -5,147 +5,60 @@
 
     <title>PHP Twente!</title>
 
-    <link href="jquery.tweet.css" rel="stylesheet">
-
-    <style>
-        @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono);
-        
-        body {        
-            font-family: 'Droid Sans', sans-serif;
-
-            background: #5a68a5;
-            color: #FFF;
-        }
-        
-        .container {
-            background: #FFF;
-            color: #333;
-            width: 448px;
-            padding: 50px;
-            margin: 1em auto;
-
-            -webkit-border-radius: 1em;
-            -moz-border-radius: 1em;
-            border-radius: 1em;
-
-            -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
-        }
-        
-        .tweet {
-            display: block;
-        }
-        
-		#social-media-buttons
-		{
-			position: fixed;
-			top: 1em;
-			left: 50%;
-			margin-left: 290px;
-		}
-
-        .logo {
-            margin-bottom: 2em;
-        }
-
-        
-        .meetup-info {display: none;}
-        
-        .meetup-info h1 {
-            text-align: center;
-            border-bottom: 1px solid #999;
-            border-top: 1px solid #999;
-            padding: 1em 0;
-        }
-        
-        .meetup-info a {
-            color: #5a68a5;
-        }
-        
-        .meetup-info p {
-            text-align: justify;
-        }
-        
-        .meetup-info .call-to-action {
-            font-weight: bold;
-        }
-        
-        .meetup-2012-10 .meetup-info {display: block;}
-        /*.meetup-2012-10 .tweet {display: none;}*/
-        
-    </style>
-
+    <!--<link href="normalize-1.0.1.css" rel="stylesheet" />-->
+	<link href="base.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container">
-        <img class="logo" src="Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo">
-        <div class="meetup-info">
-            <h1>PHPTwente Meetup <br> 4 October - Enschede</h1>
-            
-            <p>
-                Thursday 4 October we are having our second official PHPTwente meetup!
-            </p>
-<!--
-            <p>
-                As we do not yet have a confirmed speaker the topic will be announced as soon as we've managed to convince someone to present a talk.
-                <br>
-                <small>Rest assured, we will find a volenteer, even if we'd have to do it ourselves.</small>
-            </p>
- -->
-            <p>
-                Would you like to talk to other PHP developers, have some fun or drink a beer or two? 
-                <a class="call-to-action" href="http://www.meetup.com/PHP/PHP-Twente/785012/">Join us!</a>
-            </p>
+	<section class="container">
+		<nav>
+			<a href="/" class="active">Home</a>
+			<a href="/meetups.html">Meetups</a>
+			<!--<a href="/members.html">Members</a>-->
+			<a href="/about.html">About</a>
+			<a href="/social.html">Social</a>
+			<!--<a href="/jobs.html">Jobs</a>-->
+		</nav>
 
-            <p>
-                If you decide to come, please <a href="http://www.meetup.com/PHP/PHP-Twente/785012/">let us know at on our meetup page</a> so we can get a rough idea of how many people will show up.
-            </p>
-            
-            <p>
-                The meetup starts at 19:00 and will be held at the offices of <a href="http://www.trimm.nl/">TriMM</a> 
-		located at Moutlaan 25 in Enschede.  
-            </p>
-            
-            <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=TriMM,+Moutlaan+25,+7523+MC+Enschede&amp;aq=&amp;sll=52.232518,6.891131&amp;sspn=0.007412,0.01929&amp;ie=UTF8&amp;hq=TriMM,&amp;hnear=Moutlaan,+Enschede-Noord,+Enschede,+Overijssel,+The+Netherlands&amp;t=m&amp;cid=9400367139231191181&amp;ll=52.232951,6.890981&amp;spn=0.0046,0.00912&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe>
-            <br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=TriMM,+Moutlaan+25,+7523+MC+Enschede&amp;aq=&amp;sll=52.232518,6.891131&amp;sspn=0.007412,0.01929&amp;ie=UTF8&amp;hq=TriMM,&amp;hnear=Moutlaan,+Enschede-Noord,+Enschede,+Overijssel,+The+Netherlands&amp;t=m&amp;cid=9400367139231191181&amp;ll=52.232951,6.890981&amp;spn=0.0046,0.00912&amp;z=16&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
-        </div>
+		<img class="logo" src="Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo">
 
-        <div class="tweet"></div>
-    </div>
-	<div id="social-media-buttons">
-        <a href="http://www.linkedin.com/groups/PHP-Twente-4264481" >
-            <img src="linkedin-group-button.png" alt="View the PHP Twente Group on LinkedIn">
-        </a>
+        <div id="main-content"></div>
+	</section>
 
-        <a href="https://twitter.com/PHPTwente" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @PHPTwente</a>
-    </div>
+	<a href="https://github.com/potherca/PHPTwente"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://raw.github.com/seaofclouds/tweet/master/tweet/jquery.tweet.js"></script>
-    <script type="text/javascript" src="//platform.twitter.com/widgets.js" id="twitter-wjs"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
     <script type="text/javascript">
-        jQuery(function($){
-	        $(".tweet").tweet({
-	            query: '@PHPTWENTE OR to:PHPTWENTE OR from:PHPTWENTE OR #PHPTWENTE',
-	            avatar_size: 48,
-	            count: 10,
-	            loading_text: "Loading tweets..."
-	        });
-        });
-    </script>
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-29060286-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    </script>
+
+		/* Load Google Analytics */
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-29060286-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		/* AJAX Page Load and Menu Activation*/
+		$(function(){
+            var $Links, sUrl;
+
+            $Links = $('nav').find('a');
+            $Links.click(function(){
+				$Links.removeClass('active');
+				$(this).addClass('active');
+
+				sUrl = '/pages' + $(this).attr('href');
+
+				$('#main-content').load(sUrl);
+
+				return false;
+			});
+		});
+	</script>
+
 </body>
 </html>

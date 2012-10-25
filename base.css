@@ -1,0 +1,166 @@
+/*  PHPTwente.nl
+=============================================================================
+    This file contains all the basic styles for the PHPTwente website.
+-----------------------------------------------------------------------------
+
+    0. Index
+    1. Import Web Font
+    2. General Page Elements
+        2.1. Main Section
+            2.1.1. Main Menu
+            2.1.1. Logo
+        2.2. Social Media Buttons
+        2.3. Meetup Info
+
+******************************************************************************/
+
+/* Import Web Font
+ ============================================================================ */
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono);
+
+
+/* General Page Elements
+ ============================================================================ */
+body {
+    font-family: 'Droid Sans', sans-serif;
+
+    background: #5a68a5;
+    color: #FFF;
+}
+
+    /* Main Section
+     ------------------------------------------------------------------------ */
+    .container {
+        background: #FFF;
+        color: #333;
+        width: 36em; /* Dividable by the amount of menu items */
+        padding: 0;
+        position: relative;
+        margin: 1em auto;
+
+        -webkit-border-radius: 1em;
+        -moz-border-radius: 1em;
+        border-radius: 1em;
+
+        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    }
+
+        /* Main Menu
+         -------------------------------------------------------------------- */
+        .container nav {
+            width: 37em; /* 1em more than the container to allow for rounding */
+            padding: 0;
+            margin: 0;
+            top: 0;
+            position: absolute;
+            left: 0;
+            height: 1.5em;
+            line-height: 1.5em;
+            /*background: #5a68a5;*/
+            background: none;
+            z-index: 1;
+        }
+
+		.container nav :first-child {
+	        -webkit-border-top-left-radius: 1em;
+	        -moz-border-radius-topleft: 1em;
+	        border-top-left-radius: 1em;
+
+	        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        }
+
+		.container nav :last-child {
+            -webkit-border-top-right-radius: 1em;
+            -moz-border-radius-topright: 1em;
+            border-top-right-radius: 1em;
+
+            -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        }
+
+        .container nav a {
+            background-color: #b0baeb;
+            border-bottom: 0.1em solid #26388B;
+            border-left: 0.1em solid #26388B;
+
+            color: #FFF;
+
+            margin: 0;
+            padding: 0;
+
+            /*width: 5.95em; *//* 36/6 -0.075*/
+            /*width: 6.95em; *//* 35/5 -0.075*/
+            width: 8.95em; /* 36/4 -0.075*/
+
+            overflow: hidden;
+            display: block;
+            float: left;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .container nav a.active,
+        .container nav a.active:hover {
+            color: #9BA9EB;
+            background-color: #FFF;
+            border-color: #FFF;
+        }
+
+        .container nav a:hover {
+            background-color: #9BA9EB;
+            color: #FFF;
+        }
+
+        /* Logo
+         -------------------------------------------------------------------- */
+        .container .logo {
+	        margin-bottom: 2em;
+	        padding: 2.5em;
+	        width: 30em;
+	        position: relative;
+        }
+
+		/* Main Content
+		-------------------------------------------------------------------- */
+		#main-content {
+			padding: 0 2em 1em;
+		}
+/* Social Media Buttons
+ ------------------------------------------------------------------------ */
+    #social-media-buttons
+    {
+        position: fixed;
+        top: 1em;
+        left: 50%;
+        margin-left: 290px;
+    }
+
+
+
+    /*  Meetup Info
+     ------------------------------------------------------------------------ */
+    .meetup-info {display: none;}
+
+    .meetup-info h1 {
+        text-align: center;
+        border-bottom: 1px solid #999;
+        border-top: 1px solid #999;
+        padding: 1em 0;
+    }
+
+    .meetup-info a {
+        color: #5a68a5;
+    }
+
+    .meetup-info p {
+        text-align: justify;
+    }
+
+    .meetup-info .call-to-action {
+        font-weight: bold;
+    }
+
+    .meetup-2012-10 .meetup-info {display: block;}
+    /*.meetup-2012-10 .tweet {display: none;}*/
+
+
+/*====================================EOF=====================================*/
