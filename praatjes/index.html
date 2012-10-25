@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+
+    <title>PHP Twente!</title>
+
+	<link href="/base.css" rel="stylesheet" />
+    <style>
+        html, .container {
+            height: 95%;
+        }
+        .container {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+	<section class="container">
+        <div id="main-content">
+            <iframe width='100%' height='100%' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0Asc4B53r0zw-dEhVMUFVb1Ezby1TOGRXMXgyVG9mbWc&single=true&gid=2&output=html&widget=true'></iframe>
+        </div>
+	</section>
+
+
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+		/* Load Google Analytics */
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-29060286-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		/* AJAX Page Load and Menu Activation*/
+		$(function(){
+            var $Links, sUrl;
+
+            $Links = $('nav').find('a');
+            $Links.click(function(){
+				$Links.removeClass('active');
+				$(this).addClass('active');
+
+				sUrl = '/pages' + $(this).attr('href');
+
+				$('#main-content').load(sUrl);
+
+				return false;
+			});
+		});
+	</script>
+
+</body>
+</html>
