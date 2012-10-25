@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>PHP Twente!</title><!--<link href="normalize-1.0.1.css" rel="stylesheet" />--><link href="base.css" rel="stylesheet"></head><body>
+	<section class="container"><nav><a href="/" class="">Home</a>
+			<a href="/meetups.html">Meetups</a>
+			<!--<a href="/members.html">Members</a>-->
+			<a href="/about.html" class="active">About</a>
+			<a href="/social.html">Social</a>
+			<!--<a href="/jobs.html">Jobs</a>-->
+		</nav><img class="logo" src="Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo"><div id="main-content"><p>
+    Just like PHP is a very dynamic and versatile language, Twente is a very
+    dynamic and versatile place. We have Grolsch, the Universiteit Twente,
+    FC Twente and lots more!
+</p>
+
+<p>
+    We also have a mass of cool people doing plenty of exciting things for a lot
+    of interesting companies. All in PHP.
+</p>
+
+<p>
+    All we need is a banner to unite under: PHPTwente!
+</p></div>
+	</section><a href="https://github.com/potherca/PHPTwente"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29060286-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+        $(function(){
+            var $Links = $('nav').find('a');
+            $Links.click(function(){
+                var sUrl;
+                $Links.removeClass('active');
+                $(this).addClass('active');
+                sUrl = '/pages' + $(this).attr('href');
+                console.log(sUrl);
+                $('#main-content').load(sUrl);
+                //.load( url [, data] [, complete(responseText, textStatus, XMLHttpRequest)] ) Returns: jQuery
+                return false;
+            });
+        });
+    </script></body></html>
