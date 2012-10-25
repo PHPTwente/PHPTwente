@@ -13,7 +13,7 @@
 	<section class="container">
 		<nav>
 			<a href="/" class="active">Home</a>
-			<a href="/meetup.html">Meetups</a>
+			<a href="/meetups.html">Meetups</a>
 			<!--<a href="/members.html">Members</a>-->
 			<a href="/about.html">About</a>
 			<a href="/social.html">Social</a>
@@ -30,31 +30,35 @@
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
     <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-29060286-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
 
-        $(function(){
-            var $Links = $('nav').find('a');
+		/* Load Google Analytics */
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-29060286-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		/* AJAX Page Load and Menu Activation*/
+		$(function(){
+            var $Links, sUrl;
+
+            $Links = $('nav').find('a');
             $Links.click(function(){
-                var sUrl;
-                $Links.removeClass('active');
-                $(this).addClass('active');
-                sUrl = '/pages' + $(this).attr('href');
-                console.log(sUrl);
-                $('#main-content').load(sUrl);
-                //.load( url [, data] [, complete(responseText, textStatus, XMLHttpRequest)] ) Returns: jQuery
-                return false;
-            });
-        });
-    </script>
+				$Links.removeClass('active');
+				$(this).addClass('active');
+
+				sUrl = '/pages' + $(this).attr('href');
+
+				$('#main-content').load(sUrl);
+
+				return false;
+			});
+		});
+	</script>
 
 </body>
 </html>

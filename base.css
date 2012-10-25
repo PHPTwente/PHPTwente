@@ -61,16 +61,15 @@ body {
             z-index: 1;
         }
 
-        .container nav :first-child {
-            border-left: none;
-            -webkit-border-top-left-radius: 1em;
-            -moz-border-radius-topleft: 1em;
-            border-top-left-radius: 1em;
+		.container nav :first-child {
+	        -webkit-border-top-left-radius: 1em;
+	        -moz-border-radius-topleft: 1em;
+	        border-top-left-radius: 1em;
 
-            -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
         }
 
-        .container nav :last-child {
+		.container nav :last-child {
             -webkit-border-top-right-radius: 1em;
             -moz-border-radius-topright: 1em;
             border-top-right-radius: 1em;
@@ -114,14 +113,19 @@ body {
         /* Logo
          -------------------------------------------------------------------- */
         .container .logo {
-            margin-bottom: 2em;
-            padding: 2.5em;
-            width: 30em;
-            position: relative;
+	        margin-bottom: 2em;
+	        padding: 2.5em;
+	        width: 30em;
+	        position: relative;
         }
 
-    /* Social Media Buttons
-     ------------------------------------------------------------------------ */
+		/* Main Content
+		-------------------------------------------------------------------- */
+		#main-content {
+			padding: 0 2em 1em;
+		}
+/* Social Media Buttons
+ ------------------------------------------------------------------------ */
     #social-media-buttons
     {
         position: fixed;
