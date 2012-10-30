@@ -11,6 +11,8 @@
             2.1.1. Logo
         2.2. Social Media Buttons
         2.3. Meetup Info
+    3. Page Specific Styling
+        3.1. 404 / Page not found
 
 ******************************************************************************/
 
@@ -159,8 +161,23 @@ body {
         font-weight: bold;
     }
 
-    .meetup-2012-10 .meetup-info {display: block;}
-    /*.meetup-2012-10 .tweet {display: none;}*/
+    .meetup .meetup-info {
+        display: block;
+    }
+
+    .meetup-info a.talk {
+        display: block;
+        font-weight:bold;
+        text-align: center;
+        margin: 1em;
+    }
 
 
+/* Page Specific Styling
+ ------------------------------------------------------------------------ */
+    /* 404 / Page not found
+     ------------------------------------------------------------------------ */
+    .page-not-found #main-content {
+         text-align:center;
+     }
 /*====================================EOF=====================================*/
