@@ -12,7 +12,8 @@
         2.2. Social Media Buttons
         2.3. Meetup Info
     3. Page Specific Styling
-        3.1. 404 / Page not found
+        3.1. Google Form
+        3.2. 404 / Page not found
 
 ******************************************************************************/
 
@@ -175,8 +176,50 @@ body {
 
 /* Page Specific Styling
  ------------------------------------------------------------------------ */
-    /* 404 / Page not found
+    /* Google Form
      ------------------------------------------------------------------------ */
+    .ss-base-body .container {
+        background: #FFF;
+        color: #333;
+        width: 448px;
+        padding: 3em;
+        margin: 1em auto;
+
+        -webkit-border-radius: 1em;
+        -moz-border-radius: 1em;
+        border-radius: 1em;
+
+        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    }
+
+    .ss-base-body .container h1 {
+        text-align: center;
+        border-bottom: 1px solid #999;
+        border-top: 1px solid #999;
+        padding: 1em 0;
+    }
+
+    .ss-base-body .container a {
+        color: #5a68a5;
+    }
+
+    .ss-base-body .container div {
+        text-align: justify;
+    }
+
+    .ss-base-body .align-right {text-align: right;}
+
+    .ss-base-body .container .call-to-action {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .ss-no-ignore-whitespace {
+        white-space: normal;
+    }
+
+/* 404 / Page not found
+ ------------------------------------------------------------------------ */
     .page-not-found #main-content {
          text-align:center;
      }
