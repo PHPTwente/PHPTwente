@@ -11,7 +11,7 @@
 <body class="page-not-found">
 	<section class="container">
 		<nav>
-			<a href="/pages/index.html">Home</a>
+			<a href="/">Home</a>
 			<a href="/pages/meetups.html">Meetups</a>
 			<!--<a href="/pages/members.html">Members</a>-->
 			<a href="/pages/about.html">About</a>
@@ -47,8 +47,33 @@
 
 		/* AJAX Page Load and Menu Activation*/
 		$(function(){
-            var $Links, sUrl;
+            var $Links, sUrl, bIsHtml5Browser, loadPage;
 
+			bIsHtml5Browser = (window.history && window.history.pushState);
+			
+			loadPage = function(p_sUrl) {
+                var sUrl;
+				if(p_sUrl === '/') {
+					sUrl = '/_/html/index.html';
+				} else {
+					sUrl = p_sUrl.replace(/^\/pages\//, '/_/html/');
+				}
+
+				$('#main-content').load(sUrl);
+				
+				// Track the new url as if it were a new page
+				_gaq.push(['_trackPageview', p_sUrl]);
+			}
+			
+			if(bIsHtml5Browser) {
+				window.addEventListener("popstate", function(e) {
+					var sUrl = e.target.location.pathname;
+					$Links.removeClass('active');
+					$Links.filter('[href="'+sUrl+'"]').addClass('active');
+					loadPage(sUrl);
+				});
+			}
+			
             $Links = $('nav').find('a');
             $Links.click(function(){
                 if($('img.logo').attr('src') === '/_/img/Logo/PHP-Twente-404-logo.png'){
@@ -61,9 +86,11 @@
 				$(this).addClass('active');
 
                 var aHref = $(this).attr('href');
-                var sUrl = aHref.replace(/^\/pages\//, '/_/html/');
-
-				$('#main-content').load(sUrl);
+				loadPage(aHref);
+				
+				if(bIsHtml5Browser) {
+					window.history.pushState(null, null, aHref);
+				}
 
 				return false;
 			});
