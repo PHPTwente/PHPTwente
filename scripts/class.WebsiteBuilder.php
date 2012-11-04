@@ -6,13 +6,25 @@ set_error_handler(function ($p_iErrorNumber, $p_sErrorMessage, $p_sErrorFile, $p
 class WebsiteBuilder
 {
 //////////////////////////////// CLASS PROPERTIES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	public $m_sProjectRoot;
+
     public $m_sInputDirectory;
 
     public $m_sOutputDirectory;
 
     public $m_sTemplateFile;
-
+	
 ////////////////////////////// SETTERS AND GETTERS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	public function getProjectRoot()
+	{
+		return $this->m_sProjectRoot;
+	}
+	
+	public function setProjectRoot($p_sProjectRoot)
+	{
+		$this->m_sProjectRoot = $p_sProjectRoot;
+	}
+	
     public function getInputDirectory()
     {
         return $this->m_sInputDirectory;
@@ -163,7 +175,9 @@ class WebsiteBuilder
 
     protected function linksToFile(DOMElement $p_oElement, $p_sFileName)
     {
-        return ($p_oElement->getAttribute('href') === '/' . $p_sFileName);
+		$sHref = $p_oElement->getAttribute('href');
+        return ($this->getProjectRoot().$sHref === $p_sFileName)
+			|| ($sHref === '/' && $p_sFileName === $this->getOutputDirectory().'/index.html');
     }
 }
 
