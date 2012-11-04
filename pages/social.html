@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>PHP Twente -- The Noabers of PHP!</title><!--<link href="/css/normalize-1.0.1.css" rel="stylesheet" />--><link href="/_/css/base.css" rel="stylesheet"></head><body class="meetup">
-	<section class="container"><nav><a href="/pages/index.html">Home</a>
+	<section class="container"><nav><a href="/" class="">Home</a>
 			<a href="/pages/meetups.html">Meetups</a>
 			<!--<a href="/pages/members.html">Members</a>-->
-			<a href="/pages/about.html">About</a>
+			<a href="/pages/about.html" class="">About</a>
 			<a href="/pages/social.html" class="active">Social</a>
 			<!--<a href="/pages/jobs.html">Jobs</a>-->
 		</nav><img class="logo" src="/_/img/Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo"><div id="main-content"><body>
@@ -57,17 +57,44 @@
 
 		/* AJAX Page Load and Menu Activation*/
 		$(function(){
-            var $Links, sUrl;
+            var $Links, sUrl, bIsHtml5Browser, loadPage;
 
+			bIsHtml5Browser = (window.history && window.history.pushState);
+			
+			loadPage = function(p_sUrl) {
+                var sUrl;
+				if(p_sUrl === '/') {
+					sUrl = '/_/html/index.html';
+				} else {
+					sUrl = p_sUrl.replace(/^\/pages\//, '/_/html/');
+				}
+
+				$('#main-content').load(sUrl);
+				
+				// Track the new url as if it were a new page
+				_gaq.push(['_trackPageview', p_sUrl]);
+			}
+			
+			if(bIsHtml5Browser) {
+				window.addEventListener("popstate", function(e) {
+					var sUrl = e.target.location.pathname;
+					$Links.removeClass('active');
+					$Links.filter('[href="'+sUrl+'"]').addClass('active');
+					loadPage(sUrl);
+				});
+			}
+			
             $Links = $('nav').find('a');
             $Links.click(function(){
 				$Links.removeClass('active');
 				$(this).addClass('active');
 
                 var aHref = $(this).attr('href');
-                var sUrl = aHref.replace(/^\/pages\//, '/_/html/');
-
-				$('#main-content').load(sUrl);
+				loadPage(aHref);
+				
+				if(bIsHtml5Browser) {
+					window.history.pushState(null, null, aHref);
+				}
 
 				return false;
 			});

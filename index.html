@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>PHP Twente -- The Noabers of PHP!</title><!--<link href="/css/normalize-1.0.1.css" rel="stylesheet" />--><link href="/_/css/base.css" rel="stylesheet"></head><body class="meetup">
-	<section class="container"><nav><a href="/pages/index.html" class="active">Home</a>
+	<section class="container"><nav><a href="/" class="active">Home</a>
 			<a href="/pages/meetups.html">Meetups</a>
 			<!--<a href="/pages/members.html">Members</a>-->
 			<a href="/pages/about.html">About</a>
@@ -20,7 +20,7 @@
     <p>
         For all of those that enjoyed
         <a href="http://www.adayinthelifeof.nl/">Joshua Thijssen</a>'s
-        excelent talk, please <a href="http://joind.in/talk/view/7603" class="talk">
+        excellent talk, please <a href="http://joind.in/talk/view/7603" class="talk">
         rate it on joind.in</a> or tell him on twitter: <a href="https://twitter.com/JayTaph">@JayTaph</a>.
 
     </p>
@@ -30,7 +30,7 @@
     </p>
     <p>
         If there's anything you'd like to hear someone talk about, ask us on
-        linkedin and maybe someone will be willing to pick up the challenge :
+        LinkedIn and maybe someone will be willing to pick up the challenge :
         <br>
         <br>
         <a href="http://www.linkedin.com/groups/PHP-Twente-4264481">
@@ -55,17 +55,44 @@
 
 		/* AJAX Page Load and Menu Activation*/
 		$(function(){
-            var $Links, sUrl;
+            var $Links, sUrl, bIsHtml5Browser, loadPage;
 
+			bIsHtml5Browser = (window.history && window.history.pushState);
+			
+			loadPage = function(p_sUrl) {
+                var sUrl;
+				if(p_sUrl === '/') {
+					sUrl = '/_/html/index.html';
+				} else {
+					sUrl = p_sUrl.replace(/^\/pages\//, '/_/html/');
+				}
+
+				$('#main-content').load(sUrl);
+				
+				// Track the new url as if it were a new page
+				_gaq.push(['_trackPageview', p_sUrl]);
+			}
+			
+			if(bIsHtml5Browser) {
+				window.addEventListener("popstate", function(e) {
+					var sUrl = e.target.location.pathname;
+					$Links.removeClass('active');
+					$Links.filter('[href="'+sUrl+'"]').addClass('active');
+					loadPage(sUrl);
+				});
+			}
+			
             $Links = $('nav').find('a');
             $Links.click(function(){
 				$Links.removeClass('active');
 				$(this).addClass('active');
 
                 var aHref = $(this).attr('href');
-                var sUrl = aHref.replace(/^\/pages\//, '/_/html/');
-
-				$('#main-content').load(sUrl);
+				loadPage(aHref);
+				
+				if(bIsHtml5Browser) {
+					window.history.pushState(null, null, aHref);
+				}
 
 				return false;
 			});
