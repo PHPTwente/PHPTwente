@@ -116,9 +116,10 @@ class WebsiteBuilder
 
 
             $sStatus = $bSuccess ? 'succeeded' : 'failed';
-            $sOutput .= '<li>Saving <span class="filename">' . $t_sFilePath
+            $sOutput .= '<li>'
+                . '<strong class="' . $sStatus . '">' . $sStatus . '</strong> '
+                . 'Saving <span class="filename">' . $t_sFilePath
                 . '</span> to <span class="filename">' . $sFileName . '</span> '
-                . '<strong class="' . $sStatus . '">' . $sStatus . '</strong>'
                 . (empty($sErrorMessage)? '' : '<br /><span class="error-message">'.$sErrorMessage.'</span>')
             ;
         }#foreach
