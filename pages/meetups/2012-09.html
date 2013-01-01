@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>PHP Twente -- The Noabers of PHP!</title><!--<link href="/css/normalize-1.0.1.css" rel="stylesheet" />--><link href="/_/css/base.css" rel="stylesheet"></head><body class="meetup">
+<section class="container"><nav><a href="/" class="">Home</a>
+    <a href="/pages/meetups.html" class="">Meetups</a>
+    <!--<a href="/pages/members.html">Members</a>-->
+    <a href="/pages/about.html" class="">About</a>
+    <a href="/pages/social.html" class="">Social</a>
+    <!--<a href="/pages/jobs.html">Jobs</a>-->
+</nav><img class="logo" src="/_/img/Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo"><div id="main-content"><div class="meetup-info">
+	<h1>PHPTwente Meetup <br> 6 September - Enschede</h1>
+
+	<p>
+		Thursday 6 september there will be a PHPTwente meetup in Enschede!
+	</p>
+
+	<p>
+		The topic will be <strong>how we can do more fun and interesting things
+		for and with PHP developers in Twente?</strong>
+		<br>
+		<small>(And, on a side note, who will be going to the <a href="http://PFCongres.nl/">PFCongres on 15 september</a>?)</small>
+	</p>
+
+	<p>
+		Would you like to join the conversation, have you got ideas you'd like
+		to share or would you simply like to show an interest? <a class="call-to-action" href="http://www.meetup.com/PHP/PHP-Twente/778922/">Join us!</a>
+	</p>
+
+	<p>
+		If you decide to come, please <a href="http://www.meetup.com/PHP/PHP-Twente/778922/">let us know at on
+		our meetup page</a> so we can get a rough idea of how many people will
+		show up.
+	</p>
+
+	<p>
+		The meeting starts at 19:00 and will be held at "de Bakspieker"
+		(de brasserie of hotel "De Broeierd"), Hengelosestraat 725, Enschede.
+	</p>
+
+	<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=De+Bakspieker,+Hengelosestraat+725,+Enschede&amp;aq=&amp;sll=52.252397,6.843796&amp;sspn=0.11854,0.308647&amp;ie=UTF8&amp;hq=De+Bakspieker,+Hengelosestraat+725,+Enschede&amp;hnear=&amp;radius=15000&amp;ll=52.246512,6.843796&amp;spn=0.071946,0.071946&amp;t=m&amp;output=embed"></iframe>
+	<br><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=De+Bakspieker,+Hengelosestraat+725,+Enschede&amp;aq=&amp;sll=52.252397,6.843796&amp;sspn=0.11854,0.308647&amp;ie=UTF8&amp;hq=De+Bakspieker,+Hengelosestraat+725,+Enschede&amp;hnear=&amp;radius=15000&amp;ll=52.246512,6.843796&amp;spn=0.071946,0.071946&amp;t=m" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+</div></div>
+</section><a href="https://github.com/potherca/PHPTwente"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><script type="text/javascript">
+
+    /* Load Google Analytics */
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29060286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    /* AJAX Page Load and Menu Activation*/
+    $(function(){
+        var $Links, sUrl, bIsHtml5Browser, loadPage;
+
+        bIsHtml5Browser = (window.history && window.history.pushState);
+
+        loadPage = function(p_sUrl) {
+            var sUrl;
+            if(p_sUrl === '/') {
+                sUrl = '/_/html/index.html';
+            } else {
+                sUrl = p_sUrl.replace(/^\/pages\//, '/_/html/');
+            }
+
+            $('#main-content').load(sUrl);
+
+            // Track the new url as if it were a new page
+            _gaq.push(['_trackPageview', p_sUrl]);
+        }
+
+        if(bIsHtml5Browser) {
+            window.addEventListener("popstate", function(e) {
+                var sUrl = e.target.location.pathname;
+                $Links.removeClass('active');
+                $Links.filter('[href="'+sUrl+'"]').addClass('active');
+                loadPage(sUrl);
+            });
+        }
+
+        $Links = $('nav').find('a');
+        $Links.click(function(){
+            $Links.removeClass('active');
+            $(this).addClass('active');
+
+            var aHref = $(this).attr('href');
+            loadPage(aHref);
+
+            if(bIsHtml5Browser) {
+                window.history.pushState(null, null, aHref);
+            }
+
+            return false;
+        });
+    });
+</script></body></html>
