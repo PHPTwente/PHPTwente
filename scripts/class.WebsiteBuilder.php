@@ -63,6 +63,8 @@ class WebsiteBuilder
 
     public function run()
     {
+        $sOutput = '';
+
         $oDocument = $this->m_oDocument;
 
         $aFiles = $this->retrievePageFiles();
@@ -78,6 +80,7 @@ class WebsiteBuilder
 
         $oContentElement = $oDocument->getElementById('main-content');
 
+        $sOutput .= '<ul>';
         foreach ($aFiles as $t_sFilePath)
         {
             $sErrorMessage = '';
@@ -95,16 +98,33 @@ class WebsiteBuilder
                 } catch (Exception $eFailed){
                     $bSuccess = false;
                     $sErrorMessage = $eFailed->getMessage();
-                }
+                }#catch
             }
+            else
+            {
+                $oLibXmlError = libxml_get_last_error();
+                // $oLibXmlError->level // LIBXML_ERR_WARNING, LIBXML_ERR_ERROR or LIBXML_ERR_FATAL
+                // $oLibXmlError->code // @see http://www.xmlsoft.org/html/libxml-xmlerror.html#xmlParserErrors
+                $sXmlError = sprintf(
+                      'XML Error: %s (%s:%s)'
+                    , $oLibXmlError->message
+                    , $oLibXmlError->line
+                    , $oLibXmlError->column
+                );
+                $sErrorMessage = 'Could not insert Page into Template' . $sXmlError;
+            }#if
 
 
-            echo  '<li>Saving "' . $t_sFilePath
-                . '" to "' . $sFileName . '" '
-                . ($bSuccess? 'succeeded' : 'failed')
-                . (empty($sErrorMessage)? '' : '<p>'.$sErrorMessage.'</p>')
+            $sStatus = $bSuccess ? 'succeeded' : 'failed';
+            $sOutput .= '<li>Saving <span class="filename">' . $t_sFilePath
+                . '</span> to <span class="filename">' . $sFileName . '</span> '
+                . '<strong class="' . $sStatus . '">' . $sStatus . '</strong>'
+                . (empty($sErrorMessage)? '' : '<br /><span class="error-message">'.$sErrorMessage.'</span>')
             ;
         }#foreach
+        $sOutput .= '</ul>';
+
+        return $sOutput;
     }
 
 //////////////////////////////// UTILITY METHODS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
