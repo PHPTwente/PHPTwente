@@ -14,7 +14,7 @@
     3. Page Specific Styling
         3.1. Google Form
         3.2. 404 / Page not found
-
+    4. Helper Classes
 ******************************************************************************/
 
 /* Import Web Font
@@ -223,4 +223,10 @@ body {
     .page-not-found #main-content {
          text-align:center;
      }
+
+
+
+/* Helper Classes
+ ============================================================================ */
+body .text-center {text-align:center}
 /*====================================EOF=====================================*/
