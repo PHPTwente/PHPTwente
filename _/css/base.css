@@ -7,8 +7,9 @@
     1. Import Web Font
     2. General Page Elements
         2.1. Main Section
-            2.1.1. Main Menu
-            2.1.1. Logo
+			2.1.1. Strong tag
+            2.1.2. Main Menu
+            2.1.3. Logo
         2.2. Social Media Buttons
         2.3. Meetup Info
     3. Page Specific Styling
@@ -47,6 +48,12 @@ body {
 
         -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
     }
+	
+        /* Strong tag
+         -------------------------------------------------------------------- */
+		.container strong {
+			color: #222;
+		}
 
         /* Main Menu
          -------------------------------------------------------------------- */
