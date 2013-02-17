@@ -32,12 +32,24 @@ body {
     color: #FFF;
 }
 
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+p {
+	margin: 1em 0;
+}
+
     /* Main Section
      ------------------------------------------------------------------------ */
     .container {
         background: #FFF;
         color: #333;
-        width: 36em; /* Dividable by the amount of menu items */
+        width: 35em; /* Dividable by the amount of menu items */
         padding: 0;
         position: relative;
         margin: 1em auto;
@@ -46,7 +58,9 @@ body {
         -moz-border-radius: 1em;
         border-radius: 1em;
 
-        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+        -moz-background-clip: padding;
+		-webkit-background-clip: padding-box;
+		background-clip: padding-box;
     }
 	
         /* Strong tag
@@ -58,7 +72,8 @@ body {
         /* Main Menu
          -------------------------------------------------------------------- */
         .container nav {
-            width: 37em; /* 1em more than the container to allow for rounding */
+			/* width 1em more than .container to allow for non css3 browsers */
+            width: 36em;
             padding: 0;
             margin: 0;
             top: 0;
@@ -76,7 +91,11 @@ body {
 	        -moz-border-radius-topleft: 1em;
 	        border-top-left-radius: 1em;
 
-	        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+	        -moz-background-clip: padding;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box;
+			
+			border-left: 0;
         }
 
 		.container nav :last-child {
@@ -84,10 +103,16 @@ body {
             -moz-border-radius-topright: 1em;
             border-top-right-radius: 1em;
 
-            -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+            -moz-background-clip: padding;
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box;
         }
 
         .container nav a {
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			
             background-color: #b0baeb;
             border-bottom: 0.1em solid #26388B;
             border-left: 0.1em solid #26388B;
@@ -100,6 +125,7 @@ body {
             /*width: 5.95em; *//* 36/6 -0.075*/
             /*width: 6.95em; *//* 35/5 -0.075*/
             width: 8.95em; /* 36/4 -0.075*/
+			width: 7em;
 
             overflow: hidden;
             display: block;
@@ -123,7 +149,7 @@ body {
         /* Logo
          -------------------------------------------------------------------- */
         .container .logo {
-	        margin-bottom: 2em;
+	        margin-bottom: 0;
 	        padding: 2.5em;
 	        width: 30em;
 	        position: relative;
@@ -179,6 +205,14 @@ body {
         text-align: center;
         margin: 1em;
     }
+	
+	/* Banners
+     ------------------------------------------------------------------------ */
+	.banner_468_60 {
+		width: 468px;
+		height: 60px;
+		margin: 1em auto;
+	}
 
 
 /* Page Specific Styling
