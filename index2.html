@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>PHP Twente -- The Noabers of PHP!</title>
+    <!--<link href="/css/normalize-1.0.1.css" rel="stylesheet" />-->
+    <link href="/_/css/base.css" rel="stylesheet">    	
+</head>
+<body class="meetup">
+<section class="container">
+<nav><a href="/" class="active">Home</a>
+    <a href="/pages/meetups.html" class="">Meetups</a>
+    <a href="/pages/promotions.html" class="">Promotions</a>
+    <a href="/pages/about.html" class="">About</a>
+    <a href="/pages/social.html" class="">Social</a>
+    <!--<a href="/pages/jobs.html">Jobs</a>-->
+</nav><img class="logo" src="/_/img/Logo/PHP-Twente-logo-cropped.png" alt="PHP Twente Logo"><div id="main-content">
+<div class="meetup-info">
+    <h1>
+        PHPTwente Meetup<br> Woensdag 3 juli - Enschede                
+    </h1>
+
+    <p>
+        Als je komt, laat het ons op de
+        <a href="http://www.meetup.com/PHPTwente/events/126167072/">meetup pagina</a>
+        even weten, dan hebben we een beetje een idee van hoeveel mensen er komen.
+    </p>
+
+    <p>
+        We zijn te gast bij <a href="http://www.trimm.nl/">TriMM</a>,
+        Moutlaan 25 te Enschede. De deuren zijn vanaf 19:00 geopend.
+    </p>
+
+    <p>
+        Wij zijn altijd op zoek naar nieuwe lokaties voor meetups.
+        Kunnen we bij jou terecht? Laat het ons weten!
+    </p>
+
+    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=TriMM,+Moutlaan+25,+Enschede,+Netherlands&amp;hl=en&amp;ll=52.236,6.892676&amp;spn=0.014508,0.038581&amp;sll=52.232742,6.890831&amp;sspn=0.007254,0.01929&amp;t=h&amp;hq=TriMM,&hnear=Moutlaan+25,+7523+MC+Enschede,+The+Netherlands&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe><br />
+    <small><a href="https://maps.google.com/maps?q=TriMM,+Moutlaan+25,+Enschede,+Netherlands&amp;hl=en&amp;ll=52.236,6.892676&amp;spn=0.014508,0.038581&amp;sll=52.232742,6.890831&amp;sspn=0.007254,0.01929&amp;t=h&amp;hq=TriMM,&hnear=Moutlaan+25,+7523+MC+Enschede,+The+Netherlands&amp;z=15&amp;iwloc=A" style="color:#0000FF;text-align:left">Grotere kaart weergeven</a></small>
+</div>
+</div>
+</section><a href="https://github.com/potherca/PHPTwente"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script><script type="text/javascript">
+
+    /* Load Google Analytics */
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-29060286-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    /* AJAX Page Load and Menu Activation*/
+    $(function(){
+        var $Links, sUrl, bIsHtml5Browser, loadPage;
+
+        bIsHtml5Browser = (window.history && window.history.pushState);
+
+        loadPage = function(p_sUrl) {
+            var sUrl;
+            if(p_sUrl === '/') {
+                sUrl = '/_/html/index.html';
+            } else {
+                sUrl = p_sUrl.replace(/^\/pages\//, '/_/html/');
+            }
+
+            $('#main-content').load(sUrl);
+
+            // Track the new url as if it were a new page
+            _gaq.push(['_trackPageview', p_sUrl]);
+        }
+
+        if(bIsHtml5Browser) {
+            window.addEventListener("popstate", function(e) {
+                var sUrl = e.target.location.pathname;
+                $Links.removeClass('active');
+                $Links.filter('[href="'+sUrl+'"]').addClass('active');
+                loadPage(sUrl);
+            });
+        }
+
+        $Links = $('nav').find('a');
+        $Links.click(function(){
+            $Links.removeClass('active');
+            $(this).addClass('active');
+
+            var aHref = $(this).attr('href');
+            loadPage(aHref);
+
+            if(bIsHtml5Browser) {
+                window.history.pushState(null, null, aHref);
+            }
+
+            return false;
+        });
+    });
+</script></body></html>
